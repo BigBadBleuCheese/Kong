@@ -1,24 +1,19 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Epiforge.SignalRest</id>
-    <title>SignalREST</title>
-    <version>1.0.4</version>
+    <id>Epiforge.Kong</id>
+    <title>Kong</title>
+    <version>1.0.0</version>
     <authors>Epiforge</authors>
     <owners>Epiforge</owners>
-    <licenseUrl>https://raw.githubusercontent.com/BigBadBleuCheese/SignalREST/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/BigBadBleuCheese/SignalREST</projectUrl>
+    <licenseUrl>https://github.com/BigBadBleuCheese/Kong/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/BigBadBleuCheese/Kong</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>Make SignalR hubs available to any REST client.</description>
-    <releaseNotes>Initial release.</releaseNotes>
+    <description>Detect browsers using user agent strings in .NET. Inspired by Bowser. </description>
     <copyright>Copyright 2017</copyright>
-    <tags>Microsoft AspNet SignalR AspNetSignalR WebApi AspNetWebApi Epiforge Rest</tags>
-    <dependencies>
-      <dependency id="Microsoft.AspNet.SignalR.SelfHost" version="2.2.0" />
-      <dependency id="Microsoft.AspNet.WebApi.OwinSelfHost" version="5.2.3" />
-    </dependencies>
+    <tags>Microsoft Browser User Agent UserAgent Detection Bowser Epiforge Rest</tags>
   </metadata>
   <files>
-    <file src="SignalRest\bin\Release\SignalRest.dll" target="lib\net45" />
+    <file src="Kong\bin\Release\Kong.dll" target="lib\net45" />
   </files>
 </package>
