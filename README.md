@@ -1,9 +1,6 @@
 # Kong
 Detect browsers using user agent strings in .NET. Inspired by [Bowser](https://github.com/ded/bowser).
 
-## License
-[MIT License](https://github.com/BigBadBleuCheese/SignalREST/blob/master/LICENSE)
-
 ## What is this for?
 This library can be used to detect the characteristics of a web browser by examining the value of its HTTP request User-Agent header.
 
@@ -19,7 +16,7 @@ Or use the NuGet Package Manager to install `Epiforge.Kong` as a NuGet package i
 ### Step 2: Create instances of the Browser class with User-Agent header values
 Example in a [Microsoft Web API](https://www.asp.net/web-api) controller:
 
-```
+```C#
 using System.Web.Http;
 
 public class ExampleController : ApiController
@@ -35,7 +32,7 @@ public class ExampleController : ApiController
 
 Example in a [Microsoft SignalR](https://www.asp.net/signalr) hub:
 
-```
+```C#
 using Microsoft.AspNet.SignalR;
 
 public class ExampleHub : Hub
@@ -47,3 +44,6 @@ public class ExampleHub : Hub
     }
 }
 ```
+
+## License
+[MIT License](https://github.com/BigBadBleuCheese/SignalREST/blob/master/LICENSE)
