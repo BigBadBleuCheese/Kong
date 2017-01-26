@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kong.ConsoleTest
 {
@@ -11,7 +9,7 @@ namespace Kong.ConsoleTest
     {
         static void Main(string[] args)
         {
-            var properties = typeof(Kong).GetRuntimeProperties().Select(p => new
+            var properties = typeof(Browser).GetRuntimeProperties().Select(p => new
             {
                 p.Name,
                 Getter = p.GetGetMethod()
@@ -49,7 +47,7 @@ namespace Kong.ConsoleTest
                 Console.WriteLine("User Agent String: {0}", kv.Value);
                 Console.WriteLine();
                 Console.WriteLine("IDENTIFIED CHARACTERISTICS");
-                var kong = new Kong(kv.Value);
+                var kong = new Browser(kv.Value);
                 foreach (var property in properties)
                 {
                     var value = property.Getter.Invoke(kong, new object[] { });

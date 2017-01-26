@@ -3,7 +3,10 @@ using System.Text.RegularExpressions;
 
 namespace Kong
 {
-    public class Kong
+    /// <summary>
+    /// Represents a browser.
+    /// </summary>
+    public class Browser
     {
         private static readonly Regex AndroidOSVersionRegex = new Regex(@"android[ \/-](\d+(\.\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private static readonly Regex AndroidRegex = new Regex(@"android", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
@@ -95,7 +98,11 @@ namespace Kong
         private static readonly Regex YandexBrowserRegex = new Regex(@"yabrowser", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private static readonly Regex YandexBrowserVersionRegex = new Regex(@"(?:yabrowser)[\s\/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-        public Kong(string ua)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Browser"/> class. 
+        /// </summary>
+        /// <param name="ua">The value of an HTTP request User-Agent header from the browser to be identified.</param>
+        public Browser(string ua)
         {
             Func<Regex, string> getFirstMatch = regex =>
             {
@@ -459,57 +466,147 @@ namespace Kong
                 X = true;
         }
 
+        /// <summary>
+        /// Gets whether this browser has full capabilities.
+        /// </summary>
         public bool A { get; }
+        /// <summary>
+        /// Gets whether this is an Android native browser.
+        /// </summary>
         public bool Android { get; }
         public bool Bada { get; }
+        /// <summary>
+        /// Gets whether this is a Blackberry native browser.
+        /// </summary>
         public bool Blackberry { get; }
+        /// <summary>
+        /// Gets whether this browser is based on the Blink web browser engine, e.g. Chrome version 28 or later.
+        /// </summary>
         public bool Blink { get; }
+        /// <summary>
+        /// Gets whether this browser has degraded capabilities (serve simpler versions).
+        /// </summary>
         public bool C { get; }
+        /// <summary>
+        /// Gets whether this browser is Chrome.
+        /// </summary>
         public bool Chrome { get; }
         public bool ChromeBook { get; }
         public bool ChromeOS { get; }
         public bool Chromium { get; }
         public bool Coast { get; }
         public bool Epiphany { get; }
+        /// <summary>
+        /// Gets whether this browser is Firefox.
+        /// </summary>
         public bool Firefox { get; }
+        /// <summary>
+        /// Gets whether this browser is running on Firefox OS.
+        /// </summary>
         public bool FirefoxOS { get; }
+        /// <summary>
+        /// Gets whether this browser is based on the Gecko web browser engine, e.g. Firefox.
+        /// </summary>
         public bool Gecko { get; }
         public bool Googlebot { get; }
+        /// <summary>
+        /// Gets whether this is an iOS native browser.
+        /// </summary>
         public bool iOS { get; }
+        /// <summary>
+        /// Gets whether this browser is running on an iPad.
+        /// </summary>
         public bool iPad { get; }
+        /// <summary>
+        /// Gets whether this browser is running on an iPhone.
+        /// </summary>
         public bool iPhone { get; }
+        /// <summary>
+        /// Gets whether this browser is running on an iPod.
+        /// </summary>
         public bool iPod { get; }
+        /// <summary>
+        /// Gets whether this browser is running on Linux (other than Android, ChromeOS, WebOS, Tizen, and Sailfish).
+        /// </summary>
         public bool Linux { get; }
         public bool KMeleon { get; }
+        /// <summary>
+        /// Gets whether this browser is running on a Mac.
+        /// </summary>
         public bool Mac { get; }
         public bool Maxthon { get; }
+        /// <summary>
+        /// Gets whether this browser is running on a mobile device.
+        /// </summary>
         public bool Mobile { get; }
+        /// <summary>
+        /// Gets whether this browser is Microsoft Edge.
+        /// </summary>
         public bool MsEdge { get; }
+        /// <summary>
+        /// Gets whether this browser is Microsoft Internet Explorer.
+        /// </summary>
         public bool MsIE { get; }
+        /// <summary>
+        /// Gets a human readable name for this browser, e.g. "Chrome".
+        /// </summary>
         public string Name { get; }
         public bool Opera { get; }
+        /// <summary>
+        /// Gets the version of the operating system on which this browser is running.
+        /// </summary>
         public string OSVersion { get; }
         public bool Phantom { get; }
         public bool Puffin { get; }
         public bool QupZilla { get; }
+        /// <summary>
+        /// Gets whether this browser is Safari.
+        /// </summary>
         public bool Safari { get; }
         public bool Sailfish { get; }
         public bool SamsungBrowser { get; }
         public bool SeaMonkey { get; }
+        /// <summary>
+        /// Gets whether this is a the Amazon Kindle browser.
+        /// </summary>
         public bool Silk { get; }
         public bool Sleipnir { get; }
         public bool Slimer { get; }
+        /// <summary>
+        /// Gets whether this browser is running on a tablet device.
+        /// </summary>
         public bool Tablet { get; }
         public bool Tizen { get; }
+        /// <summary>
+        /// Gets whether this browser is running on an HP TouchPad.
+        /// </summary>
         public bool TouchPad { get; }
+        /// <summary>
+        /// Gets a version number for the browser, e.g. "32.0".
+        /// </summary>
         public string Version { get; }
         public bool YandexBrowser { get; }
         public bool UcBrowser { get; }
         public bool Vivaldi { get; }
+        /// <summary>
+        /// Gets whether this browser is based on the Webkit web browser engine, e.g. Safari, Chrome version 27 or earlier.
+        /// </summary>
         public bool Webkit { get; }
+        /// <summary>
+        /// Gets whether this is a WebOS native browser.
+        /// </summary>
         public bool WebOS { get; }
+        /// <summary>
+        /// Gets whether this browser is running on Windows.
+        /// </summary>
         public bool Windows { get; }
+        /// <summary>
+        /// Gets whether this browser is running on Windows Phone.
+        /// </summary>
         public bool WindowsPhone { get; }
+        /// <summary>
+        /// Gets whether this browser has minimal capabilities and is probably not well-detected.
+        /// </summary>
         public bool X { get; }
         public bool Xbox { get; }
     }
