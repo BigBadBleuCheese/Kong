@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Epiforge.Kong</id>
-    <title>Kong</title>
+    <title>Kong (Browser Detector)</title>
     <version>1.0.0</version>
     <authors>Epiforge</authors>
     <owners>Epiforge</owners>
