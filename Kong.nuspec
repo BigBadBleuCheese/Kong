@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Epiforge.SignalRest</id>
+    <title>SignalREST</title>
+    <version>1.0.4</version>
+    <authors>Epiforge</authors>
+    <owners>Epiforge</owners>
+    <licenseUrl>https://raw.githubusercontent.com/BigBadBleuCheese/SignalREST/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/BigBadBleuCheese/SignalREST</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Make SignalR hubs available to any REST client.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Microsoft AspNet SignalR AspNetSignalR WebApi AspNetWebApi Epiforge Rest</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.SignalR.SelfHost" version="2.2.0" />
+      <dependency id="Microsoft.AspNet.WebApi.OwinSelfHost" version="5.2.3" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="SignalRest\bin\Release\SignalRest.dll" target="lib\net45" />
+  </files>
+</package>
