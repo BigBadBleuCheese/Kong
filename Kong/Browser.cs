@@ -8,95 +8,99 @@ namespace Kong
     /// </summary>
     public class Browser
     {
-        private static readonly Regex AndroidOSVersionRegex = new Regex(@"android[ \/-](\d+(\.\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex AndroidRegex = new Regex(@"android", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex BadaOSVersionRegex = new Regex(@"bada\/(\d+(\.\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex BadaRegex = new Regex(@"bada", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex BadaVersionRegex = new Regex(@"dolfin\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex BlackberryOSVersionRegex = new Regex(@"rim\stablet\sos\s(\d+(\.\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex BlackberryRegex = new Regex(@"blackberry|\bbb\d+", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex BlackberryVersionRegex = new Regex(@"blackberry[\d]+\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex BlinkRegex = new Regex(@"(apple)?webkit\/537\.36", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex ChromiumRegex = new Regex(@"chromium", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex ChromiumVersionRegex = new Regex(@"(?:chromium)[\s\/](\d+(?:\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex ChromeOSRegex = new Regex(@"CrOS", RegexOptions.ECMAScript | RegexOptions.Compiled);
-        private static readonly Regex ChromeOSVersionRegex = new Regex(@"(?:chrome|crios|crmo)\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex ChromeRegex = new Regex(@"chrome|crios|crmo", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex ChromeVersionRegex = new Regex(@"(?:chrome|crios|crmo)\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex CoastRegex = new Regex(@"coast", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex CoastVersionRegex = new Regex(@"(?:coast)[\s\/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex EdgeRegex = new Regex(@"chrome.+? edge", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex EdgeVersionRegex = new Regex(@"edge\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex EpiphanyRegex = new Regex(@"epiphany", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex EpiphanyVersionRegex = new Regex(@"(?:epiphany)[\s\/](\d+(?:\.\d+)+)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex FirefoxRegex = new Regex(@"firefox|iceweasel|fxios", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex FirefoxOSRegex = new Regex(@"\((mobile|tablet);[^\)]*rv:[\d\.]+\)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex FirefoxVersionRegex = new Regex(@"(?:firefox|iceweasel|fxios)[ \/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex GeckoRegex = new Regex(@"gecko", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex GeckoVersionRegex = new Regex(@"gecko\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex GooglebotRegex = new Regex(@"googlebot", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex GooglebotVersionRegex = new Regex(@"googlebot\/(\d+(\.\d+))", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex IEMobileVersionRegex = new Regex(@"iemobile\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex InternetExplorerRegex = new Regex(@"msie|trident", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex InternetExplorerVersionRegex = new Regex(@"(?:msie |rv:)(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex iOSDeviceRegex = new Regex(@"(ipod|iphone|ipad)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex iOSOSVersionRegex = new Regex(@"os (\d+([_\s]\d+)*) like mac os x", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex iOSOSVersionReplaceRegex = new Regex(@"[_\s]", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex KMeleonRegex = new Regex(@"k-meleon", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex KMeleonVersionRegex = new Regex(@"(?:k-meleon)[\s\/](\d+(?:\.\d+)+)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex LikeAndroidRegex = new Regex(@"like android", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex LinuxRegex = new Regex(@"linux", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex MacRegex = new Regex(@"macintosh", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex MobileRegex = new Regex(@"[^-]mobi", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex MaxthonRegex = new Regex(@"mxios", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex MaxthonVersionRegex = new Regex(@"(?:mxios)[\s\/](\d+(?:\.\d+)+)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex NexusMobileRegex = new Regex(@"nexus\s*[0-6]\s*", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex NexusTabletRegex = new Regex(@"nexus\s*[0-9]+", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex NewOperaRegex = new Regex(@"opr|opios", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex NewOperaVersionRegex = new Regex(@"(?:opr|opios)[\s\/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex OldOperaRegex = new Regex(@"opera", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex OldOperaVersionRegex = new Regex(@"(?:opera|opr|opios)[\s\/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex PuffinRegex = new Regex(@"puffin", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex PuffinVersionRegex = new Regex(@"(?:puffin)[\s\/](\d+(?:\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex PhantomJsRegex = new Regex(@"phantom", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex PhantomJsVersionRegex = new Regex(@"phantomjs\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex QupZillaRegex = new Regex(@"qupzilla", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex QupZillaVersionRegex = new Regex(@"(?:qupzilla)[\s\/](\d+(?:\.\d+)+)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex RimRegex = new Regex(@"rim\stablet", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex SafariRegex = new Regex(@"safari|applewebkit", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex SailfishRegex = new Regex(@"sailfish", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex SailfishVersionRegex = new Regex(@"sailfish\s?browser\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex SamsungBrowserRegex = new Regex(@"SamsungBrowser", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex SamsungBrowserVersionRegex = new Regex(@"(?:SamsungBrowser)[\s\/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex SeaMonkeyRegex = new Regex(@"seamonkey\/", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex SeaMonkeyVersionRegex = new Regex(@"seamonkey\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex SilkRegex = new Regex(@"silk", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex SilkVersionRegex = new Regex(@"silk\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex SleipnirRegex = new Regex(@"sleipnir", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex SleipnirVersionRegex = new Regex(@"(?:sleipnir)[\s\/](\d+(?:\.\d+)+)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex SlimerJsRegex = new Regex(@"slimerjs", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex SlimerJsVersionRegex = new Regex(@"slimerjs\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex TabletRegex = new Regex(@"tablet", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex TizenOSVersionRegex = new Regex(@"tizen[\/\s](\d+(\.\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex TizenRegex = new Regex(@"tizen", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex TizenVersionRegex = new Regex(@"(?:tizen\s?)?browser\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex TouchPadRegex = new Regex(@"touchpad\/", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex UcBrowserRegex = new Regex(@"ucbrowser", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex UcBrowserVersionRegex = new Regex(@"(?:ucbrowser)[\s\/](\d+(?:\.\d+)+)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex UnknownRegex = new Regex(@"^(.*)\/(.*) ", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex VersionIdentifierRegex = new Regex(@"version\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex VivaldiRegex = new Regex(@"vivaldi", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex VivaldiVersionRegex = new Regex(@"vivaldi\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex WebkitRegex = new Regex(@"(apple)?webkit", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex WebOSOSVersionRegex = new Regex(@"(?:web|hpw)os\/(\d+(\.\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex WebOSRegex = new Regex(@"(web|hpw)os", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex WebOSVersionRegex = new Regex(@"w(?:eb)?osbrowser\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex WindowsPhoneOSVersionRegex = new Regex(@"windows phone (?:os)?\s?(\d+(\.\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex WindowsPhoneRegex = new Regex(@"windows phone", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex WindowsRegex = new Regex(@"windows phone", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex XboxRegex = new Regex(@"xbox", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex YandexBrowserRegex = new Regex(@"yabrowser", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex YandexBrowserVersionRegex = new Regex(@"(?:yabrowser)[\s\/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex AndroidOSVersionRegex = new Regex(@"android[ \/-](\d+(\.\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex AndroidRegex = new Regex(@"android", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex BadaOSVersionRegex = new Regex(@"bada\/(\d+(\.\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex BadaRegex = new Regex(@"bada", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex BadaVersionRegex = new Regex(@"dolfin\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex BlackberryOSVersionRegex = new Regex(@"rim\stablet\sos\s(\d+(\.\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex BlackberryRegex = new Regex(@"blackberry|\bbb\d+", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex BlackberryVersionRegex = new Regex(@"blackberry[\d]+\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex BlinkRegex = new Regex(@"(apple)?webkit\/537\.36", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex ChromiumRegex = new Regex(@"chromium", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex ChromiumVersionRegex = new Regex(@"(?:chromium)[\s\/](\d+(?:\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex ChromeOSRegex = new Regex(@"CrOS", RegexOptions.ECMAScript | RegexOptions.Compiled);
+        static readonly Regex ChromeOSVersionRegex = new Regex(@"(?:chrome|crios|crmo)\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex ChromeRegex = new Regex(@"chrome|crios|crmo", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex ChromeVersionRegex = new Regex(@"(?:chrome|crios|crmo)\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex CoastRegex = new Regex(@"coast", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex CoastVersionRegex = new Regex(@"(?:coast)[\s\/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex EdgeRegex = new Regex(@"chrome.+? edge", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex EdgeVersionRegex = new Regex(@"edge\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex EpiphanyRegex = new Regex(@"epiphany", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex EpiphanyVersionRegex = new Regex(@"(?:epiphany)[\s\/](\d+(?:\.\d+)+)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex FirefoxRegex = new Regex(@"firefox|iceweasel|fxios", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex FirefoxOSRegex = new Regex(@"\((mobile|tablet);[^\)]*rv:[\d\.]+\)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex FirefoxVersionRegex = new Regex(@"(?:firefox|iceweasel|fxios)[ \/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex GeckoRegex = new Regex(@"gecko", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex GeckoVersionRegex = new Regex(@"gecko\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex GooglebotRegex = new Regex(@"googlebot", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex GooglebotVersionRegex = new Regex(@"googlebot\/(\d+(\.\d+))", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex IEMobileVersionRegex = new Regex(@"iemobile\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex InternetExplorerRegex = new Regex(@"msie|trident", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex InternetExplorerVersionRegex = new Regex(@"(?:msie |rv:)(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex iOSDeviceRegex = new Regex(@"(ipod|iphone|ipad)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex iOSOSVersionRegex = new Regex(@"os (\d+([_\s]\d+)*) like mac os x", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex iOSOSVersionReplaceRegex = new Regex(@"[_\s]", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex KMeleonRegex = new Regex(@"k-meleon", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex KMeleonVersionRegex = new Regex(@"(?:k-meleon)[\s\/](\d+(?:\.\d+)+)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex LikeAndroidRegex = new Regex(@"like android", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex LinuxRegex = new Regex(@"linux", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex MacRegex = new Regex(@"macintosh", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex macOSOSVersionRegex = new Regex(@"Mac OS X (\d+([_\.\s]\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex macOSOSVersionReplaceRegex = new Regex(@"Mac OS X (\d+([_\.\s]\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex MobileRegex = new Regex(@"[^-]mobi", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex MaxthonRegex = new Regex(@"mxios", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex MaxthonVersionRegex = new Regex(@"(?:mxios)[\s\/](\d+(?:\.\d+)+)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex NexusMobileRegex = new Regex(@"nexus\s*[0-6]\s*", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex NexusTabletRegex = new Regex(@"nexus\s*[0-9]+", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex NewOperaRegex = new Regex(@"opr\/|opios", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex NewOperaVersionRegex = new Regex(@"(?:opr|opios)[\s\/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex OldOperaRegex = new Regex(@"opera", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex OldOperaVersionRegex = new Regex(@"(?:opera|opr|opios)[\s\/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex PuffinRegex = new Regex(@"puffin", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex PuffinVersionRegex = new Regex(@"(?:puffin)[\s\/](\d+(?:\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex PhantomJsRegex = new Regex(@"phantom", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex PhantomJsVersionRegex = new Regex(@"phantomjs\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex QupZillaRegex = new Regex(@"qupzilla", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex QupZillaVersionRegex = new Regex(@"(?:qupzilla)[\s\/](\d+(?:\.\d+)+)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex RimRegex = new Regex(@"rim\stablet", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex SafariRegex = new Regex(@"safari|applewebkit", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex SailfishRegex = new Regex(@"sailfish", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex SailfishVersionRegex = new Regex(@"sailfish\s?browser\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex SamsungBrowserRegex = new Regex(@"SamsungBrowser", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex SamsungBrowserVersionRegex = new Regex(@"(?:SamsungBrowser)[\s\/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex SeaMonkeyRegex = new Regex(@"seamonkey\/", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex SeaMonkeyVersionRegex = new Regex(@"seamonkey\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex SilkRegex = new Regex(@"silk", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex SilkVersionRegex = new Regex(@"silk\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex SleipnirRegex = new Regex(@"sleipnir", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex SleipnirVersionRegex = new Regex(@"(?:sleipnir)[\s\/](\d+(?:\.\d+)+)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex SlimerJsRegex = new Regex(@"slimerjs", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex SlimerJsVersionRegex = new Regex(@"slimerjs\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex TabletRegex = new Regex(@"tablet", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex TabletPCRegex = new Regex(@"tablet pc", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex TizenOSVersionRegex = new Regex(@"tizen[\/\s](\d+(\.\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex TizenRegex = new Regex(@"tizen", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex TizenVersionRegex = new Regex(@"(?:tizen\s?)?browser\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex TouchPadRegex = new Regex(@"touchpad\/", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex UcBrowserRegex = new Regex(@"ucbrowser", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex UcBrowserVersionRegex = new Regex(@"(?:ucbrowser)[\s\/](\d+(?:\.\d+)+)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex UnknownRegex = new Regex(@"^(.*)\/(.*) ", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex VersionIdentifierRegex = new Regex(@"version\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex VivaldiRegex = new Regex(@"vivaldi", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex VivaldiVersionRegex = new Regex(@"vivaldi\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex WebkitRegex = new Regex(@"(apple)?webkit", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex WebOSOSVersionRegex = new Regex(@"(?:web|hpw)os\/(\d+(\.\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex WebOSRegex = new Regex(@"(web|hpw)os", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex WebOSVersionRegex = new Regex(@"w(?:eb)?osbrowser\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex WindowsOSVersionRegex = new Regex(@"Windows ((NT|XP)( \d\d?.\d)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex WindowsPhoneOSVersionRegex = new Regex(@"windows phone (?:os)?\s?(\d+(\.\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex WindowsPhoneRegex = new Regex(@"windows phone", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex WindowsRegex = new Regex(@"windows phone", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex XboxRegex = new Regex(@"xbox", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex YandexBrowserRegex = new Regex(@"yabrowser", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex YandexBrowserVersionRegex = new Regex(@"(?:yabrowser)[\s\/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Browser"/> class. 
@@ -136,7 +140,7 @@ namespace Kong
             var linux = !android && !sailfish && !tizen && !webos && LinuxRegex.IsMatch(ua);
             var edgeVersion = getFirstMatch(EdgeVersionRegex);
             var versionIdentifier = getFirstMatch(VersionIdentifierRegex);
-            var tablet = TabletRegex.IsMatch(ua);
+            var tablet = TabletRegex.IsMatch(ua) && !TabletPCRegex.IsMatch(ua);
             var mobile = !tablet && MobileRegex.IsMatch(ua);
             var xbox = XboxRegex.IsMatch(ua);
 
@@ -403,8 +407,36 @@ namespace Kong
                 Linux = true;
 
             var osVersion = string.Empty;
-            if (WindowsPhone)
+            if (Windows)
+            {
+                osVersion = getFirstMatch(WindowsOSVersionRegex);
+                if (osVersion == "NT")
+                    osVersion = "NT";
+                else if (osVersion == "XP")
+                    osVersion = "XP";
+                else if (osVersion == "NT 5.0")
+                    osVersion = "2000";
+                else if (osVersion == "NT 5.1")
+                    osVersion = "XP";
+                else if (osVersion == "NT 5.2")
+                    osVersion = "2003";
+                else if (osVersion == "NT 6.0")
+                    osVersion = "Vista";
+                else if (osVersion == "NT 6.1")
+                    osVersion = "7";
+                else if (osVersion == "NT 6.2")
+                    osVersion = "8";
+                else if (osVersion == "NT 6.3")
+                    osVersion = "8.1";
+                else if (osVersion == "NT 10.0")
+                    osVersion = "10";
+                else
+                    osVersion = null;
+            }
+            else if (WindowsPhone)
                 osVersion = getFirstMatch(WindowsPhoneOSVersionRegex);
+            else if (Mac)
+                osVersion = macOSOSVersionReplaceRegex.Replace(getFirstMatch(macOSOSVersionRegex), ".");
             else if (iosDevice.IsTruthy())
             {
                 osVersion = getFirstMatch(iOSOSVersionRegex);
@@ -423,7 +455,7 @@ namespace Kong
             if (osVersion.IsTruthy())
                 OSVersion = osVersion;
 
-            var osMajorVersion = osVersion.Split('.')[0].CoerceToInteger();
+            var osMajorVersion = Windows ? null : osVersion.Split('.')[0].CoerceToInteger();
             if (tablet ||
                 nexusTablet ||
                 iosDevice.Equals("ipad", StringComparison.OrdinalIgnoreCase) ||
