@@ -93,7 +93,7 @@ namespace Kong
         private static readonly Regex WebOSVersionRegex = new Regex(@"w(?:eb)?osbrowser\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private static readonly Regex WindowsPhoneOSVersionRegex = new Regex(@"windows phone (?:os)?\s?(\d+(\.\d+)*)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private static readonly Regex WindowsPhoneRegex = new Regex(@"windows phone", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex WindowsRegex = new Regex(@"windows phone", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex WindowsRegex = new Regex(@"windows", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private static readonly Regex XboxRegex = new Regex(@"xbox", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private static readonly Regex YandexBrowserRegex = new Regex(@"yabrowser", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private static readonly Regex YandexBrowserVersionRegex = new Regex(@"(?:yabrowser)[\s\/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
