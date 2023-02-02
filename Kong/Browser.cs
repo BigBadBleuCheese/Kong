@@ -25,7 +25,7 @@ namespace Kong
         static readonly Regex ChromeVersionRegex = new Regex(@"(?:chrome|crios|crmo)\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         static readonly Regex CoastRegex = new Regex(@"coast", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         static readonly Regex CoastVersionRegex = new Regex(@"(?:coast)[\s\/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        static readonly Regex EdgeRegex = new Regex(@"chrome.+? edge", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex EdgeRegex = new Regex(@"chrome.+? edg", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         static readonly Regex EdgeVersionRegex = new Regex(@"edge\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         static readonly Regex EpiphanyRegex = new Regex(@"epiphany", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         static readonly Regex EpiphanyVersionRegex = new Regex(@"(?:epiphany)[\s\/](\d+(?:\.\d+)+)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
