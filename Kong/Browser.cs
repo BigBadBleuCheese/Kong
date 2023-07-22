@@ -25,8 +25,10 @@ namespace Kong
         static readonly Regex ChromeVersionRegex = new Regex(@"(?:chrome|crios|crmo)\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         static readonly Regex CoastRegex = new Regex(@"coast", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         static readonly Regex CoastVersionRegex = new Regex(@"(?:coast)[\s\/](\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        static readonly Regex EdgeRegex = new Regex(@"chrome.+? edge", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        static readonly Regex EdgeVersionRegex = new Regex(@"edge\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex EdgeRegexO = new Regex(@"chrome.+? edge", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex EdgeVersionRegexO = new Regex(@"edge\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex EdgeRegexN = new Regex(@"chrome.+? edg", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        static readonly Regex EdgeVersionRegexN = new Regex(@"edg\/(\d+(\.\d+)?)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         static readonly Regex EpiphanyRegex = new Regex(@"epiphany", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         static readonly Regex EpiphanyVersionRegex = new Regex(@"(?:epiphany)[\s\/](\d+(?:\.\d+)+)", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
         static readonly Regex FirefoxRegex = new Regex(@"firefox|iceweasel|fxios", RegexOptions.ECMAScript | RegexOptions.Compiled | RegexOptions.IgnoreCase);
@@ -138,8 +140,9 @@ namespace Kong
             var windows = !windowsPhone && WindowsRegex.IsMatch(ua);
             var mac = !iosDevice.IsTruthy() && !silk && MacRegex.IsMatch(ua);
             var linux = !android && !sailfish && !tizen && !webos && LinuxRegex.IsMatch(ua);
-            var edgeVersion = getFirstMatch(EdgeVersionRegex);
-            var versionIdentifier = getFirstMatch(VersionIdentifierRegex);
+            var edgeVersionO = getFirstMatch(EdgeVersionRegexO);
+            var edgeVersionN = getFirstMatch(EdgeVersionRegexN);
+			var versionIdentifier = getFirstMatch(VersionIdentifierRegex);
             var tablet = TabletRegex.IsMatch(ua) && !TabletPCRegex.IsMatch(ua);
             var mobile = !tablet && MobileRegex.IsMatch(ua);
             var xbox = XboxRegex.IsMatch(ua);
@@ -214,10 +217,10 @@ namespace Kong
             {
                 Name = "Windows Phone";
                 WindowsPhone = true;
-                if (edgeVersion.IsTruthy())
+                if (edgeVersionO.IsTruthy())
                 {
                     MsEdge = true;
-                    Version = edgeVersion;
+                    Version = edgeVersionO;
                 }
                 else
                 {
@@ -239,11 +242,17 @@ namespace Kong
                 Chrome = true;
                 Version = getFirstMatch(ChromeOSVersionRegex);
             }
-            else if (EdgeRegex.IsMatch(ua))
+            else if (EdgeRegexO.IsMatch(ua))
             {
                 Name = "Microsoft Edge";
                 MsEdge = true;
-                Version = edgeVersion;
+                Version = edgeVersionO;
+            }
+            else if (EdgeRegexN.IsMatch(ua))
+            {
+	            Name = "Microsoft Edge";
+	            MsEdge = true;
+	            Version = edgeVersionN;
             }
             else if (VivaldiRegex.IsMatch(ua))
             {

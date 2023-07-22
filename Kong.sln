@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kong", "Kong\Kong.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kong.ConsoleTest", "Kong.ConsoleTest\Kong.ConsoleTest.csproj", "{CE93A482-416B-4DAD-B9F3-109F880B4B96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kong.Tests", "Kong.Tests\Kong.Tests.csproj", "{35C1A4FE-54D5-43FE-857D-88FC3AB709F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CE93A482-416B-4DAD-B9F3-109F880B4B96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE93A482-416B-4DAD-B9F3-109F880B4B96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE93A482-416B-4DAD-B9F3-109F880B4B96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35C1A4FE-54D5-43FE-857D-88FC3AB709F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35C1A4FE-54D5-43FE-857D-88FC3AB709F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35C1A4FE-54D5-43FE-857D-88FC3AB709F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35C1A4FE-54D5-43FE-857D-88FC3AB709F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
