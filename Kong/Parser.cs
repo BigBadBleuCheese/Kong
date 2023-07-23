@@ -17,7 +17,9 @@ namespace Kong
 			Android,
 			iOS,
 			Linux,
-			Windows
+			Windows,
+			Mac,
+			Headless
 		}
 
 		public enum Engine
@@ -25,14 +27,17 @@ namespace Kong
 			Unknown = 0,
 			Blink,
 			Gecko,
-			Webkit
+			Webkit,
+			Sleipnir
 		}
 
 		public enum Model
 		{
 			Unknown = 0,
 			iPhone,
-			iPad
+			iPad,
+			iPod,
+			ChromeBook
 		}
 
 		[Flags]
@@ -50,7 +55,17 @@ namespace Kong
 			Firefox,
 			MsEdge,
 			Opera,
-			Safari
+			Safari,
+			KMeleon,
+			SeaMonkey,
+			UcBrowser,
+			Sailfish,
+			QupZilla,
+			Phantom,
+			Sleipnir,
+			Coast,
+			Epiphany,
+			Puffin
 		}
 
 		public sealed class Parsed
@@ -73,6 +88,7 @@ namespace Kong
 					if (_browser.Blink) return Engine.Blink;
 					if (_browser.Gecko) return Engine.Gecko;
 					if (_browser.Webkit) return Engine.Webkit;
+					if (_browser.Sleipnir) return Engine.Sleipnir;
 					return Engine.Unknown;
 				}
 			}
@@ -81,8 +97,10 @@ namespace Kong
 			{
 				get
 				{
-					if (_browser.iPhone) return Model.iPhone;
+					if (_browser.iPod) return Model.iPod;
 					if (_browser.iPad) return Model.iPad;
+					if (_browser.iPhone) return Model.iPhone;
+					if (_browser.ChromeBook) return Model.ChromeBook;
 					return Model.Unknown;
 				}
 			}
@@ -107,6 +125,16 @@ namespace Kong
 					if (_browser.MsEdge) return Base.MsEdge;
 					if (_browser.Opera) return Base.Opera;
 					if (_browser.Safari) return Base.Safari;
+					if (_browser.KMeleon) return Base.KMeleon;
+					if (_browser.SeaMonkey) return Base.SeaMonkey;
+					if (_browser.UcBrowser) return Base.UcBrowser;
+					if (_browser.Sailfish) return Base.Sailfish;
+					if (_browser.QupZilla) return Base.QupZilla;
+					if (_browser.Phantom) return Base.Phantom;
+					if (_browser.Sleipnir) return Base.Sleipnir;
+					if (_browser.Coast) return Base.Coast;
+					if (_browser.Epiphany) return Base.Epiphany;
+					if (_browser.Puffin) return Base.Puffin;
 					return Base.Unknown;
 				}
 			}
@@ -115,10 +143,12 @@ namespace Kong
 			{
 				get
 				{
-					if (_browser.Android) return OS.Android;
+					if (_browser.Sailfish || _browser.Android) return OS.Android;
 					if (_browser.iOS) return OS.iOS;
-					if (_browser.Linux) return OS.Linux;
-					if (_browser.Windows) return OS.Windows;
+					if (_browser.ChromeOS || _browser.Linux) return OS.Linux;
+					if (_browser.Xbox || _browser.Windows) return OS.Windows;
+					if (_browser.Mac) return OS.Mac;
+					if (_browser.Phantom) return OS.Headless;
 					return OS.Unknown;
 				}
 			}
